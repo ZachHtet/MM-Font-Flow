@@ -5,6 +5,10 @@ const nextConfig = {
     NEXT_PUBLIC_VISION_API_URL: process.env.NEXT_PUBLIC_VISION_API_URL,
     NEXT_PUBLIC_GEMINI_API_URL: process.env.NEXT_PUBLIC_GEMINI_API_URL,
   },
+  experimental: {
+    appDir: true, 
+  },
+  output: 'standalone', 
 };
 
 export default nextConfig;
