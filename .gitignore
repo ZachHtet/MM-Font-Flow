@@ -1,0 +1,17 @@
+# Node.js dependencies
+node_modules/
+
+# Environment files containing sensitive data
+.env
+
+# macOS specific files
+.DS_Store
+
+# Next.js build directory (if you're using Next.js)
+.next/
+
+# Log files
+*.log
+
+# npm-debug file
+npm-debug.log

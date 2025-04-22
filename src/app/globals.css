@@ -1,0 +1,580 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Myanmar Font Definitions */
+@font-face {
+  font-family: 'Pyidaungsu';
+  src: url('/fonts/Pyidaungsu.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Zawgyi One';
+  src: url('/fonts/Zawgyi-One.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Win Innwa';
+  src: url('/fonts/W01Art House.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Font classes for easy application */
+.font-unicode {
+  font-family: 'Pyidaungsu', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.font-zawgyi {
+  font-family: 'Zawgyi One', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+
+.font-win {
+  font-family: 'Win Innwa', sans-serif;
+  font-size: 1.26rem;
+  line-height: 1.2;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(0.98 0.02 80);  /* Light orangey background */
+  --foreground: oklch(0.2 0.02 80);   /* Dark text for light mode */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.02 80);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.02 80);
+  --primary: #D96E4B;
+  --primary-foreground: white;
+  --secondary: oklch(0.96 0.03 80);    /* Light orange secondary */
+  --secondary-foreground: oklch(0.2 0.02 80);
+  --muted: oklch(0.96 0.02 80);
+  --muted-foreground: oklch(0.5 0.02 80);
+  --accent: oklch(0.9 0.05 80);       /* Subtle orange accent */
+  --accent-foreground: oklch(0.2 0.02 80);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.9 0.03 80);       /* Light orange border */
+  --input: oklch(0.9 0.03 80);
+  --ring: #D96E4B;
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.98 0.02 80);
+  --sidebar-foreground: oklch(0.2 0.02 80);
+  --sidebar-primary: #D96E4B;
+  --sidebar-primary-foreground: white;
+  --sidebar-accent: oklch(0.96 0.03 80);
+  --sidebar-accent-foreground: oklch(0.2 0.02 80);
+  --sidebar-border: oklch(0.9 0.03 80);
+  --sidebar-ring: #D96E4B;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: #D96E4B;
+  --primary-foreground: white;
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: #D96E4B;
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: #D96E4B;
+  --sidebar-primary-foreground: white;
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: #D96E4B;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Basic styles for ReactCrop */
+.ReactCrop__crop-selection {
+  border: 2px solid #6B8AFF !important;
+  box-shadow: 0 0 0 9999em rgba(0, 0, 0, 0.5) !important;
+}
+
+.ReactCrop__drag-handle {
+  background-color: #6B8AFF !important;
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+}
+
+/* Ensure crop overlay doesn't interfere with buttons */
+.ReactCrop__crop-selection {
+  z-index: 10 !important;
+}
+
+.ReactCrop__drag-bar {
+  z-index: 20 !important;
+}
+
+.ReactCrop__drag-handle {
+  z-index: 30 !important;
+}
+
+/* Improve button visibility in crop mode */
+button {
+  position: relative;
+  z-index: 40;
+}
+
+/* Make Apply Crop button stand out more */
+button.bg-\[\#6B8AFF\] {
+  filter: brightness(1.1);
+  box-shadow: 0 0 15px rgba(107, 138, 255, 0.5);
+}
+
+/* Make Reset and Cancel buttons properly visible */
+button.bg-\[\#333333\] {
+  filter: brightness(1.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  opacity: 1 !important;
+}
+
+/* Fix for any z-index issues in crop mode */
+.ReactCrop {
+  z-index: 5 !important;
+}
+
+.ReactCrop__child-wrapper {
+  z-index: 5 !important;
+}
+
+/* Crop container and image styling */
+.crop-container {
+  max-height: 480px;
+  padding: 16px;
+  background-color: rgba(22, 24, 29, 0.5);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(75, 85, 99, 0.5);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: auto;
+  max-width: 100%;
+  transition: all 0.2s ease;
+  box-sizing: content-box;
+}
+
+.crop-container img {
+  max-height: 480px;
+  object-fit: contain;
+}
+
+/* Custom ReactCrop styling */
+.ReactCrop {
+  --ReactCrop-border-color: #359DFF !important;
+  --ReactCrop-selection-fill: rgba(0, 0, 0, 0.2) !important;
+  max-height: 480px !important;
+  max-width: 100% !important;
+}
+
+.rounded-lg.border.border-gray-600.p-4.bg-\[\#222222\] {
+  position: relative;
+  z-index: 1;
+}
+
+.rounded-lg.border.border-gray-600.p-4.bg-\[\#222222\] > div {
+  position: relative;
+  z-index: inherit;
+}
+
+/* Consistent layout classes with fixed 120px margins */
+.app-container {
+  width: 100%;
+  max-width: calc(100% - 240px);
+  margin-left: 120px;
+  margin-right: 120px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1440px) {
+  .app-container {
+    max-width: calc(100% - 160px);
+    margin-left: 80px;
+    margin-right: 80px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .app-container {
+    max-width: calc(100% - 80px);
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    max-width: calc(100% - 48px);
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-container {
+    max-width: calc(100% - 32px);
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+/* Button styling */
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(217, 110, 75, 0.2);
+}
+
+.btn-primary:hover {
+  background-color: #e07d5c;
+  box-shadow: 0 2px 15px rgba(217, 110, 75, 0.4);
+}
+
+/* English toggle button styling */
+.btn-english-on {
+  background-color: rgba(22, 163, 74, 0.8); /* Using current hover as default */
+  border: 1px solid rgba(22, 163, 74, 1);
+  color: white;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 10px rgba(22, 163, 74, 0.3);
+}
+
+.btn-english-on:hover {
+  background-color: rgba(22, 163, 74, 1); /* Brighter hover state */
+  border-color: rgba(22, 163, 74, 1);
+  box-shadow: 0 2px 15px rgba(22, 163, 74, 0.5);
+}
+
+.btn-english-off {
+  background-color: var(--card); /* Use theme background for light mode */
+  border: 1px solid var(--border);
+  color: var(--muted-foreground);
+  transition: all 0.2s ease;
+}
+
+.dark .btn-english-off {
+  background-color: #2A2D36; /* Keep dark mode as is */
+  border: 1px solid #4a4d57;
+  color: #9ca3af;
+}
+
+.btn-english-off:hover {
+  background-color: var(--muted); /* Lighter background on hover */
+  border-color: var(--muted);
+  color: var(--muted-foreground);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.btn-outline {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+  color: var(--foreground);
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark .btn-outline {
+  background-color: #2A2D36;
+  border: 1px solid #4a4d57;
+  color: white;
+}
+
+.btn-outline:hover {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  box-shadow: 0 2px 8px rgba(217, 110, 75, 0.2);
+}
+
+.btn-outline:hover svg {
+  color: var(--primary-foreground) !important;
+}
+
+.dark .btn-outline:hover {
+  background-color: #40424c;
+  border-color: #6b6f7c;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+}
+
+.btn-icon {
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+}
+
+.btn-icon:hover {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-danger {
+  background-color: #ef4444;
+  border: 1px solid #ef4444;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;
+  border-color: #dc2626;
+  box-shadow: 0 2px 10px rgba(239, 68, 68, 0.3);
+}
+
+.btn-danger svg {
+  color: white;
+}
+
+.btn-danger:hover svg {
+  color: white;
+}
+
+.btn-clear-all {
+  background-color: #ef4444;
+  border: 1px solid #ef4444;
+  color: white;
+  transition: all 0.2s ease;
+  border-radius: 0.375rem;
+}
+
+.btn-clear-all:hover {
+  background-color: #dc2626;
+  border-color: #dc2626;
+  color: white;
+  box-shadow: 0 2px 10px rgba(239, 68, 68, 0.3);
+}
+
+.btn-reset {
+  background-color: #2A2D36;
+  border: 1px solid #4a4d57;
+  color: #ef4444;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+}
+
+.btn-reset:hover {
+  background-color: #ef4444;
+  border-color: #ef4444;
+  color: white;
+  box-shadow: 0 2px 10px rgba(239, 68, 68, 0.2);
+}
+
+.btn-reset svg {
+  color: #ef4444;
+}
+
+.btn-reset:hover svg {
+  color: white;
+}
+
+/* Ensure all buttons have pointer cursor */
+button, 
+[role="button"],
+.button,
+.btn {
+  cursor: pointer !important;
+}
+
+/* Fix icon visibility on button hover */
+button:hover:not(.theme-toggle-btn) svg {
+  color: white;
+}
+
+/* Specific styles for copy button in light mode */
+.btn-outline.copy-button:hover {
+  background-color: #D96E4B;
+  border-color: #D96E4B;
+  color: white;
+}
+
+.btn-outline.copy-button:hover svg.copy-icon {
+  color: white !important;
+}
+
+/* Special handling for copy buttons */
+.btn-outline:hover svg.copy-icon {
+  color: #D96E4B !important;
+}
+
+/* FAQ dropdown icon should stay orange on hover */
+.faq-button:hover .dropdown-icon {
+  color: #e07d5c !important; /* Slightly brighter orange for hover */
+}
+
+/* But override with more specific rules for dark mode */
+.dark .btn-icon svg,
+.dark .btn-outline svg {
+  color: white !important;
+}
+
+.dark .btn-icon:hover svg,
+.dark .btn-outline:hover svg {
+  color: #D96E4B !important;
+}
+
+.crop-preview-image {
+  max-height: 480px;
+  object-fit: contain;
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 480px;
+  object-fit: contain;
+}
+
+/* Adaptive image container */
+.image-preview-container {
+  padding: 16px;
+  background-color: rgba(22, 24, 29, 0.5);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(75, 85, 99, 0.5);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: auto;
+  max-width: 100%;
+  transition: all 0.2s ease;
+}
+
+/* Dark mode specific styles for icons */
+.dark .btn-icon svg,
+.dark .btn-outline svg {
+  color: white;
+}
+
+.dark .btn-icon:hover svg,
+.dark .btn-outline:hover svg {
+  color: #D96E4B !important;
+}
+
+/* For consistent utility icon hover in light mode */
+.btn-icon:hover svg,
+.btn-outline:hover svg {
+  color: white !important;
+}
+
+/* Dark mode button hover styles */
+.dark .btn-icon:hover,
+.dark .btn-outline:hover {
+  background-color: #40424c;
+  border-color: #6b6f7c;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+  color: #D96E4B;
+}
+
+/* Override to keep document/copy icon unchanged even on hover */
+.btn-outline:hover svg.copy-icon {
+  color: #D96E4B !important;
+}
+
+/* Make sure this overrides all other rules */
+button:hover svg.copy-icon {
+  color: #D96E4B !important;
+}
+
+/* Theme toggle icon override */
+.theme-toggle-btn:hover svg {
+  color: #D96E4B !important;
+}
