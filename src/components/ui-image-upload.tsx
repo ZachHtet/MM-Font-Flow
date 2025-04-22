@@ -1,5 +1,5 @@
 "use client";
-import Image from 'next/image';
+
 import { useState, useCallback, useRef, useEffect } from "react";
 import ReactCrop, { type Crop as ReactCropType } from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";

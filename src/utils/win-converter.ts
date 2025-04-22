@@ -388,7 +388,7 @@ export function handleSpecialDoubleStoryCharacters(text: string): string {
   });
   
   // Handle ္ဘ - Double counter: É, Single counter: Ç
-  result = result.replace(/([က-အE])(္ဘ)/g, (_, consonant, doubleStory) => {
+  result = result.replace(/([က-အE])(္ဘ)/g, (_, consonant) => {
     const winConsonant = unicodeToWinChar[consonant] || consonant;
     return winConsonant + (DOUBLE_COUNTERS.includes(consonant) ? "É" : "Ç");
   });
