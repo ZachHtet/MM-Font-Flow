@@ -370,19 +370,19 @@ export function handleSpecialDoubleStoryCharacters(text: string): string {
   // Handle special double story characters with consonants before processing
   
   // Handle ္တ - Double counter: å, Single counter: Å
-  result = result.replace(/([က-အE])(္တ)/g, (_, consonant, doubleStory) => {
+  result = result.replace(/([က-အE])(္တ)/g, (_, consonant) => {
     const winConsonant = unicodeToWinChar[consonant] || consonant;
     return winConsonant + (DOUBLE_COUNTERS.includes(consonant) ? "å" : "Å");
   });
   
   // Handle ္ထ - Double counter: ¬, Single counter: ¦
-  result = result.replace(/([က-အE])(္ထ)/g, (_, consonant, doubleStory) => {
+  result = result.replace(/([က-အE])(္ထ)/g, (_, consonant) => {
     const winConsonant = unicodeToWinChar[consonant] || consonant;
     return winConsonant + (DOUBLE_COUNTERS.includes(consonant) ? "¬" : "¦");
   });
   
   // Handle ္ဆ - Double counter: °, Single counter: ä
-  result = result.replace(/([က-အE])(္ဆ)/g, (_, consonant, doubleStory) => {
+  result = result.replace(/([က-အE])(္ဆ)/g, (_, consonant) => {
     const winConsonant = unicodeToWinChar[consonant] || consonant;
     return winConsonant + (DOUBLE_COUNTERS.includes(consonant) ? "°" : "ä");
   });

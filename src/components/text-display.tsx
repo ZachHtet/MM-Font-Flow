@@ -25,22 +25,22 @@ export function TextDisplay({
 }: TextDisplayProps) {
   // Create a local state to track if the textarea is being edited
   const [isEditing, setIsEditing] = useState(false);
-  
+
   // When text from parent changes and we're not editing, update display
   useEffect(() => {
     if (!isEditing) {
       // Reset editing state when parent text changes
       setIsEditing(false);
     }
-  }, [text]);
-  
+  }, [text]);  // Only depend on 'text' here, no need for 'isEditing'
+
   // Which text to show in the textarea
   const textToDisplay = isEditing ? text : (displayText !== undefined ? displayText : text);
-  
+
   // Handle focus/blur to track editing state
   const handleFocus = () => setIsEditing(true);
   const handleBlur = () => setIsEditing(false);
-  
+
   return (
     <div className="flex flex-col h-full min-w-[360px] w-full">
       <div className="mb-4">

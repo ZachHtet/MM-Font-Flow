@@ -1,9 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
-
 // Base URL for Vision API
 const VISION_API_URL = "https://vision.googleapis.com/v1/images:annotate";
 const API_KEY = process.env.GOOGLE_VISION_API_KEY;
-const PROJECT_ID = process.env.GOOGLE_PROJECT_ID;
+// const PROJECT_ID = process.env.GOOGLE_PROJECT_ID;
 
 // This function will handle the direct API call to Google Vision
 export async function analyzeImageWithVision(imageBuffer: Buffer): Promise<string> {

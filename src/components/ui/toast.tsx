@@ -10,7 +10,7 @@ const ToastProvider = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div 
     ref={ref} 
-    className="fixed bottom-0 right-0 z-50 w-full p-4 md:max-w-sm md:right-4 md:bottom-4"
+    className={cn("fixed bottom-0 right-0 z-50 w-full p-4 md:max-w-sm md:right-4 md:bottom-4", className)} // Added className here
     {...props} 
   />
 ))
@@ -22,7 +22,7 @@ const ToastViewport = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("fixed bottom-0 right-0 z-50 flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]", className)}
+    className={cn("fixed bottom-0 right-0 z-50 flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]", className)} // Added className here
     {...props}
   />
 ))
@@ -46,7 +46,7 @@ const toastVariants = cva(
 )
 
 // Define the ToastActionElement type
-export type ToastActionElement = React.ReactElement<any, string>
+export type ToastActionElement = React.ReactElement<React.ReactNode, string>
 
 export interface ToastProps
   extends React.HTMLAttributes<HTMLDivElement>,
@@ -94,7 +94,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
     return (
       <div
         ref={ref}
-        className={cn(toastVariants({ variant }), className)}
+        className={cn(toastVariants({ variant }), className)} // Added className here
         {...props}
       >
         <div className="flex-1">
@@ -124,7 +124,7 @@ const ToastTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("text-sm font-medium", className)}
+    className={cn("text-sm font-medium", className)} // Added className here
     {...props}
   />
 ))
@@ -136,7 +136,7 @@ const ToastDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("text-sm opacity-90", className)}
+    className={cn("text-sm opacity-90", className)} // Added className here
     {...props}
   />
 ))
@@ -148,7 +148,7 @@ const ToastClose = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <button
     ref={ref}
-    className={cn("rounded-md p-1 text-white/60 opacity-0 transition-opacity hover:text-white group-hover:opacity-100", className)}
+    className={cn("rounded-md p-1 text-white/60 opacity-0 transition-opacity hover:text-white group-hover:opacity-100", className)} // Added className here
     {...props}
   >
     <X className="h-4 w-4" />

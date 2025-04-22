@@ -1,5 +1,5 @@
 "use client";
-
+import Image from 'next/image';
 import { useState, useCallback, useRef, useEffect } from "react";
 import ReactCrop, { type Crop as ReactCropType } from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
@@ -14,18 +14,18 @@ interface UIImageUploadProps {
   onTextExtracted: (text: string) => void;
 }
 
-function CropButton({ onClick }: { onClick: () => void }) {
-  return (
-    <Button
-      onClick={onClick}
-      size="sm"
-      variant="outline"
-      className="h-12 w-12 p-0 bg-primary/80 border-primary hover:bg-primary hover:border-primary transition-all duration-200"
-    >
-      <CropIcon className="h-5 w-5 text-white" />
-    </Button>
-  );
-}
+// function CropButton({ onClick }: { onClick: () => void }) {
+//   return (
+//     <Button
+//       onClick={onClick}
+//       size="sm"
+//       variant="outline"
+//       className="h-12 w-12 p-0 bg-primary/80 border-primary hover:bg-primary hover:border-primary transition-all duration-200"
+//     >
+//       <CropIcon className="h-5 w-5 text-white" />
+//     </Button>
+//   );
+// }
 
 export default function UIImageUpload({ onTextExtracted }: UIImageUploadProps) {
   const [isProcessing, setIsProcessing] = useState(false);
@@ -136,20 +136,19 @@ export default function UIImageUpload({ onTextExtracted }: UIImageUploadProps) {
 
   const {
     previewUrl,
-    fileName,
     fileInputRef,
     handleThumbnailClick,
     handleFileChange,
     handleRemove: originalHandleRemove,
   } = useImageUpload({
-    onUpload: async (url) => {
-      // Get the file from the input
-      const file = fileInputRef.current?.files?.[0];
-      if (file) {
-        // Don't process immediately, let the user crop first if they want
-        // Processing is now triggered by the Process button
-      }
-    },
+    // onUpload: async (url) => {
+    //   // Get the file from the input
+    //   const file = fileInputRef.current?.files?.[0];
+    //   if (file) {
+    //     // Don't process immediately, let the user crop first if they want
+    //     // Processing is now triggered by the Process button
+    //   }
+    // },
   });
 
   // Custom remove handler that ensures we go back to the initial upload state
@@ -473,7 +472,8 @@ export default function UIImageUpload({ onTextExtracted }: UIImageUploadProps) {
   const handleThumbnailClickWithReset = useCallback(() => {
     setOcrApplied(false); // Reset applied state when a new image is selected
     handleThumbnailClick();
-  }, [handleThumbnailClick]);
+  }, [handleThumbnailClick, fileInputRef]);
+  
 
   // Add soft glow to the Process button
   useEffect(() => {

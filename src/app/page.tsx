@@ -16,7 +16,7 @@ export default function Home() {
   const [unicodeText, setUnicodeText] = useState("");
   const [zawgyiText, setZawgyiText] = useState("");
   const [winText, setWinText] = useState("");
-  const [activeInput, setActiveInput] = useState("");
+  // const [activeInput, setActiveInput] = useState("");
   const [englishMode, setEnglishMode] = useState(true);
   const { toast } = useToast();
   
@@ -36,39 +36,6 @@ export default function Home() {
     return withSpaces.replace(/\s+/g, ' ').trim();
   };
   
-  // Special function to handle Win text copying
-  const processWinTextForCopy = (text: string) => {
-    if (englishMode) return text;
-    
-    // For Win text, we need to preserve the important encoding characters
-    // but remove any actual English words
-    
-    // This approach captures Myanmar-related characters and ignores the rest
-    let myanmarOnly = '';
-    let isEnglishSequence = false;
-    
-    for (let i = 0; i < text.length; i++) {
-      const char = text[i];
-      // Check if it's a Myanmar character or a special Win font character
-      const isMyanmarChar = /[\u1000-\u109F]|[^a-zA-Z0-9\s]/.test(char);
-      
-      if (isMyanmarChar) {
-        myanmarOnly += char;
-        isEnglishSequence = false;
-      } else if (char === ' ') {
-        // Only add spaces if they're not part of an English sequence
-        if (!isEnglishSequence && myanmarOnly.length > 0) {
-          myanmarOnly += ' ';
-        }
-      } else {
-        // It's an English character
-        isEnglishSequence = true;
-      }
-    }
-    
-    // Clean up extra spaces
-    return myanmarOnly.replace(/\s+/g, ' ').trim();
-  };
   
   // Process display text (used for display only)
   const processTextForDisplay = (text: string) => {
@@ -97,7 +64,7 @@ export default function Home() {
     const processedText = englishMode ? text : filterEnglishWords(text);
     setWinText(uni2win(processedText));
     
-    setActiveInput("unicode");
+    // setActiveInput("unicode");
     
     // Show success toast for text extraction
     if (text && text.trim()) {
@@ -119,7 +86,7 @@ export default function Home() {
   const handleUnicodeChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newText = e.target.value;
     setUnicodeText(newText);
-    setActiveInput("unicode");
+    // setActiveInput("unicode");
     
     // If text is deleted completely, clear all boxes
     if (!newText) {
@@ -140,7 +107,7 @@ export default function Home() {
   const handleZawgyiChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newText = e.target.value;
     setZawgyiText(newText);
-    setActiveInput("zawgyi");
+    // setActiveInput("zawgyi");
     
     // If text is deleted completely, clear all boxes
     if (!newText) {
@@ -162,7 +129,7 @@ export default function Home() {
   const handleWinChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newText = e.target.value;
     setWinText(newText);
-    setActiveInput("win");
+    // setActiveInput("win");
     
     // If text is deleted completely, clear all boxes
     if (!newText) {
@@ -268,7 +235,7 @@ export default function Home() {
     setUnicodeText("");
     setZawgyiText("");
     setWinText("");
-    setActiveInput("");
+    // setActiveInput("");
     
     // Only show notification if there was content to clear
     if (hasContent) {
