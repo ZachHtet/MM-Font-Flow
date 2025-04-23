@@ -65,23 +65,23 @@ export function FAQSection() {
 
   return (
     <div className="py-16">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16">
         Frequently Asked Questions
       </h2>
 
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-4 sm:gap-5 md:gap-6 md:grid-cols-2 faq-grid">
         {faqData.map((faq, index) => (
           <div
             key={index}
-            className="border border-border rounded-lg overflow-hidden break-inside-avoid"
+            className="border border-border rounded-lg overflow-hidden break-inside-avoid h-full flex flex-col"
           >
             <button
               onClick={() => toggleItem(index)}
-              className="w-full flex justify-between items-center p-6 text-left bg-muted hover:bg-primary/10 transition-colors duration-200"
+              className="w-full flex justify-between items-center p-4 sm:p-5 md:p-6 text-left bg-muted hover:bg-primary/10 transition-colors duration-200 faq-button flex-shrink-0"
             >
-              <span className="text-lg font-medium">{faq.question}</span>
+              <span className="text-base sm:text-md md:text-lg font-medium pr-3">{faq.question}</span>
               <ChevronDown
-                className={`h-5 w-5 text-[#D96E4B] transition-transform duration-300 ${
+                className={`min-w-[20px] h-5 w-5 text-[#D96E4B] transition-transform duration-300 dropdown-icon ${
                   openItems.includes(index) ? "rotate-180" : ""
                 }`}
               />
@@ -90,11 +90,11 @@ export function FAQSection() {
             <div
               className={`transition-all duration-300 ${
                 openItems.includes(index)
-                  ? "max-h-[800px] opacity-100 p-6 bg-card/50 text-muted-foreground"
+                  ? "max-h-[800px] opacity-100 p-4 sm:p-5 md:p-6 bg-card/50 text-sm sm:text-base text-muted-foreground"
                   : "max-h-0 opacity-0 p-0"
-              } overflow-hidden`}
+              } overflow-y-auto flex-1`}
             >
-              {faq.answer}
+              <p className="whitespace-pre-wrap">{faq.answer}</p>
             </div>
           </div>
         ))}

@@ -284,11 +284,60 @@ button.bg-\[\#333333\] {
   }
 }
 
+/* Specific styles for iPad and tablet screens */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  textarea {
+    min-height: 200px !important;
+    width: 100% !important;
+    background-color: var(--card) !important;
+    color: var(--foreground) !important;
+    border-color: var(--border) !important;
+    font-size: 16px !important;
+  }
+  
+  .dark textarea {
+    /* background-color: #2A2D36 !important; */
+    color: white !important;
+    border-color: #4a4d57 !important;
+  }
+  
+  /* Ensure proper font sizes on tablets */
+  .font-unicode {
+    font-size: 0.9rem !important;
+    line-height: 1.8 !important;
+  }
+  
+  .font-zawgyi {
+    font-size: 0.85rem !important;
+    line-height: 1.8 !important;
+  }
+  
+  .font-win {
+    font-size: 1.26rem !important;
+    line-height: 1.2 !important;
+  }
+}
+
 @media (max-width: 768px) {
   .app-container {
     max-width: calc(100% - 48px);
     margin-left: 24px;
     margin-right: 24px;
+  }
+  
+  /* Improve text area display on tablets */
+  textarea {
+    min-height: 180px !important;
+    width: 100% !important;
+    background-color: var(--card) !important;
+    color: var(--foreground) !important;
+    border-color: var(--border) !important;
+  }
+  
+  .dark textarea {
+    /* background-color: #2A2D36 !important; */
+    color: white !important;
+    border-color: #4a4d57 !important;
   }
 }
 
@@ -297,6 +346,44 @@ button.bg-\[\#333333\] {
     max-width: calc(100% - 32px);
     margin-left: 16px;
     margin-right: 16px;
+  }
+  
+  textarea {
+    min-height: 150px !important;
+    padding: 12px !important;
+    font-size: 14px !important;
+  }
+  
+  .font-unicode {
+    font-size: 0.85rem !important;
+  }
+  
+  .font-zawgyi {
+    font-size: 0.8rem !important;
+  }
+  
+  .font-win {
+    font-size: 1.2rem !important;
+  }
+  
+  /* Improved FAQ styling for mobile */
+  .faq-grid > div > button {
+    min-height: 70px;
+    padding: 12px !important;
+  }
+  
+  .faq-grid > div > div {
+    padding: 12px !important;
+  }
+  
+  .faq-button span {
+    font-size: 14px !important;
+    line-height: 1.4;
+  }
+  
+  .faq-grid > div > div p {
+    font-size: 13px !important;
+    line-height: 1.5;
   }
 }
 
@@ -496,9 +583,122 @@ button:hover:not(.theme-toggle-btn) svg {
   color: #D96E4B !important;
 }
 
+/* FAQ section responsive styling */
+.faq-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 16px !important; /* Ensure consistent padding */
+}
+
+.faq-button .dropdown-icon {
+  flex-shrink: 0;
+}
+
 /* FAQ dropdown icon should stay orange on hover */
 .faq-button:hover .dropdown-icon {
   color: #e07d5c !important; /* Slightly brighter orange for hover */
+}
+
+/* Standardized FAQ box heights for different screen sizes */
+.grid.md\:grid-cols-2 > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px; /* Add consistent margin between boxes */
+  background-color: var(--card); /* Ensure background color is consistent */
+}
+
+.grid.md\:grid-cols-2 > div > button {
+  height: auto; /* Allow height to adjust to content */
+  min-height: 80px; /* Minimum height for question buttons */
+  display: flex;
+  align-items: center;
+  padding: 16px !important; /* Ensure consistent padding */
+}
+
+.grid.md\:grid-cols-2 > div > div {
+  flex: 1;
+  padding: 16px !important; /* Ensure consistent padding for answer text */
+}
+
+/* Responsive layout adjustments */
+@media (min-width: 1025px) {
+  .grid.md\:grid-cols-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px; /* Larger gap for desktop */
+    grid-auto-rows: 1fr; /* Equal height rows */
+  }
+  
+  .grid.md\:grid-cols-2 > div {
+    margin-bottom: 0; /* Remove margin as gap handles spacing */
+  }
+}
+
+@media (min-width: 921px) and (max-width: 1024px) {
+  .grid.md\:grid-cols-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; /* Medium gap for tablets */
+    grid-auto-rows: 1fr; /* Equal height rows */
+  }
+  
+  .grid.md\:grid-cols-2 > div {
+    margin-bottom: 0; /* Remove margin as gap handles spacing */
+  }
+}
+
+/* Single column layout for screens under 920px */
+@media (max-width: 920px) {
+  .grid.md\:grid-cols-2,
+  .faq-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .grid.md\:grid-cols-2 > div,
+  .faq-grid > div {
+    width: 100%;
+    margin-bottom: 0; /* Remove margin as gap handles spacing */
+  }
+}
+
+/* Additional FAQ grid styling */
+.faq-grid {
+  width: 100%;
+}
+
+.faq-grid > div {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 480px) {
+  .grid.md\:grid-cols-2 > div {
+    min-height: 120px; /* Even smaller height for small mobile */
+  }
+  
+  .grid.md\:grid-cols-2 > div > button {
+    height: 70px; /* Smaller button height for mobile */
+    padding: 12px !important;
+  }
+  
+  .faq-button span {
+    font-size: 14px !important;
+    line-height: 1.4;
+  }
+  
+  .grid.md\:grid-cols-2 > div > div {
+    padding: 12px !important;
+  }
+  
+  .grid.md\:grid-cols-2 > div > div p {
+    font-size: 13px !important;
+  }
 }
 
 /* But override with more specific rules for dark mode */

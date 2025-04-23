@@ -31,9 +31,9 @@ export function TextDisplay({
   const handleBlur = () => setIsEditing(false);
 
   return (
-    <div className="flex flex-col h-full min-w-[360px] w-full">
-      <div className="mb-4">
-        <label className="font-medium">{title}</label>
+    <div className="flex flex-col h-full w-full">
+      <div className="mb-3 sm:mb-4">
+        <label className="text-sm sm:text-base font-medium">{title}</label>
       </div>
       <div className="flex-grow">
         <textarea
@@ -48,10 +48,10 @@ export function TextDisplay({
         <Button 
           onClick={onCopy} 
           variant="outline" 
-          className="mt-4 w-full flex items-center justify-center gap-2 py-6 transition-all duration-200"
+          className="mt-3 sm:mt-4 w-full flex items-center justify-center gap-2 py-4 sm:py-6 transition-all duration-200"
         >
           <Copy className="h-5 w-5 copy-icon" />
-          <span>Copy</span>
+          <span className="text-sm sm:text-base">Copy</span>
         </Button>
       </div>
     </div>

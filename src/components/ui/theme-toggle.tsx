@@ -14,9 +14,13 @@ export function ThemeToggle() {
     if (storedTheme === "light") {
       setIsDarkTheme(false);
       document.documentElement.classList.remove("dark");
+      document.body.classList.remove("dark");
+      document.body.style.backgroundColor = ""; // Reset to default
     } else if (storedTheme === "dark") {
       setIsDarkTheme(true);
       document.documentElement.classList.add("dark");
+      document.body.classList.add("dark");
+      document.body.style.backgroundColor = "#121212"; // Dark background
     } else {
       // Check system preference if no stored preference
       const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -24,8 +28,12 @@ export function ThemeToggle() {
       
       if (prefersDark) {
         document.documentElement.classList.add("dark");
+        document.body.classList.add("dark");
+        document.body.style.backgroundColor = "#121212"; // Dark background
       } else {
         document.documentElement.classList.remove("dark");
+        document.body.classList.remove("dark");
+        document.body.style.backgroundColor = ""; // Reset to default
       }
     }
     
@@ -36,14 +44,19 @@ export function ThemeToggle() {
   const toggleTheme = () => {
     if (isDarkTheme) {
       document.documentElement.classList.remove("dark");
+      document.body.classList.remove("dark");
+      document.body.style.backgroundColor = ""; // Reset to default
       localStorage.setItem("theme", "light");
     } else {
       document.documentElement.classList.add("dark");
+      document.body.classList.add("dark");
+      document.body.style.backgroundColor = "#121212"; // Dark background
       localStorage.setItem("theme", "dark");
     }
     setIsDarkTheme(!isDarkTheme);
   };
 
+  // Rest of the component remains the same
   return (
     <Button 
       variant="ghost" 
@@ -71,4 +84,4 @@ export function ThemeToggle() {
       <span className="sr-only">Toggle theme</span>
     </Button>
   );
-} 
+}

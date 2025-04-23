@@ -3,6 +3,26 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Footer } from "@/components/footer";
+<script
+  dangerouslySetInnerHTML={{
+    __html: `
+      (function() {
+        try {
+          const storedTheme = localStorage.getItem('theme');
+          if (storedTheme === 'dark' || (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            document.body.classList.add('dark');
+            document.body.style.backgroundColor = "#121212";
+          } else {
+            document.documentElement.classList.remove('dark');
+            document.body.classList.remove('dark');
+            document.body.style.backgroundColor = "";
+          }
+        } catch (e) {}
+      })();
+    `,
+  }}
+/>
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
